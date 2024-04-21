@@ -21,17 +21,41 @@
     font-weight: 700;
     font-style: normal;
   }
+  .anonymous-pro-regular {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .anonymous-pro-bold {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .anonymous-pro-regular-italic {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .anonymous-pro-bold-italic {
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
 /* -------------------------------------------------------------------*/
 /* -------------------------------------------------NAV BAR------------------*/
   .navbar {
-    background: linear-gradient(to right, rgb(0, 132, 255,0.8), rgb(0, 129, 204,0.8));
+    background: linear-gradient(to right, rgba(0, 132, 255, 0.9), rgba(0, 162, 255, 0.9));
     position: fixed;
     top: 4;
-    border-radius: 30px;
-    border-color: rgb(0, 0, 0);
+    border-radius: 60px;
+    border-color: rgb(0, 217, 255);
     border-style: solid;
-    border-width: 2px;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2);
+    border-width: 4px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 5px 0;
     overflow: hidden;
     font-family: "Amatic SC", sans-serif;
@@ -46,7 +70,7 @@
   }
 
   .navbar img {
-    height: 50px;
+    height: 60px;
     margin: 1px 10px; /* Espaçamento ao redor da imagem */
     vertical-align: middle;
     float: left;
@@ -59,6 +83,28 @@
   .navbar img:hover, .navbar a:hover {
     transform: scale(1.2); /* Aumenta o tamanho em 10% */
   }
+
+  /* Estilos para o texto ao lado da navbar */
+.sidebar-text {
+  font-family: "Anonymous Pro", monospace;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 20px;
+    letter-spacing: -3px;
+  color: #ff00b3;
+  position: fixed; /* Fixa na tela */
+  top: 0.5px; /* Alinha com o topo */
+  left: 28%; /* Posiciona à direita da navbar */
+  transform: translateX(50%); /* Ajusta precisamente a posição horizontal */
+  width: calc(50% - 3px); /* Ajusta a largura considerando a borda da navbar */
+}
+
+/* Estilos para a linha pontilhada */
+.dotted-line {
+  border-top: 2px dotted #000; /* Cria uma borda superior pontilhada */
+  margin-top: 20px; /* Espaçamento acima da linha pontilhada */
+  margin-left: -160%;
+}
 
   /* Animação de rotação */
 @keyframes rotate {
@@ -96,5 +142,5 @@
   }
 /* -------------------------------------------------------------------*/
 body {
-    font-family: "Permanent Marker", cursive;
+  background-color: #EDFEFF;
 }
