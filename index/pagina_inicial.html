@@ -11,6 +11,35 @@
     <title>Pagina Inicial</title>
 </head>
 <body>
-   <p>Texto grandeeeeeeeeee</p>
+    <div class="navbar">
+        <img src="C:\Users\Henrique Pimenta\Documents\Henrique\SPTECH\Pesquisa e Inovação\Projeto-LBP\imagens\LBP_Stacked_Logo_500x373.png" alt="Logo"> <!-- Substitua com o caminho correto da imagem -->
+        <a href="#home">Início</a>
+        <img src="C:\Users\Henrique Pimenta\Documents\Henrique\SPTECH\Pesquisa e Inovação\Projeto-LBP\imagens\terra.png" alt="estrela"> <!-- Substitua com o caminho correto da imagem -->
+
+        <a href="#news">Notícias</a>
+        <img src="C:\Users\Henrique Pimenta\Documents\Henrique\SPTECH\Pesquisa e Inovação\Projeto-LBP\imagens\image-removebg-preview.png" alt="estrela"> <!-- Substitua com o caminho correto da imagem -->
+        <a href="#contact">Contato</a>
+        <img src="C:\Users\Henrique Pimenta\Documents\Henrique\SPTECH\Pesquisa e Inovação\Projeto-LBP\imagens\Captura_de_tela_2024-04-20_233243-removebg-preview.png" alt="Personagem"> <!-- Substitua com o caminho correto da imagem -->
+
+        <a href="#about">Sobre</a>
+    </div>
 </body>
+<script>
+    // Seleciona todos os ícones e links da barra de navegação
+    const navItems = document.querySelectorAll('.navbar img, .navbar a');
+
+    // Adiciona um evento de clique que adiciona a classe 'rotating'
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.add('rotating');
+
+        // Remove a classe após a animação terminar
+        setTimeout(() => {
+          item.classList.remove('rotating');
+        }, 500); // 500ms é a duração da animação
+      });
+    });
+  </script>
 </html>
+
+

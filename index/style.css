@@ -1,3 +1,4 @@
+/* -------------------------------------------------FONTES------------------*/
 .permanent-marker-regular {
   font-family: "Permanent Marker", cursive;
   font-weight: 400;
@@ -20,7 +21,77 @@
     font-weight: 700;
     font-style: normal;
   }
-  
+/* -------------------------------------------------------------------*/
+/* -------------------------------------------------NAV BAR------------------*/
+  .navbar {
+    background: linear-gradient(to right, rgb(0, 132, 255), rgb(0, 129, 204));
+    border-radius: 30px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2);
+    padding: 5px 0;
+    overflow: hidden;
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 900;
+    font-style: normal;;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    height: 60px; /* Reduz a altura da barra de navegação */
+    width: 50%; /* Reduz a largura da barra de navegação */
+  }
+
+  .navbar img {
+    height: 50px;
+    margin: 1px 10px; /* Espaçamento ao redor da imagem */
+    vertical-align: middle;
+    float: left;
+  }
+  .navbar img, .navbar a {
+    transition: transform 0.3s; /* Animação suave para transformação */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  }
+
+  .navbar img:hover, .navbar a:hover {
+    transform: scale(1.2); /* Aumenta o tamanho em 10% */
+  }
+
+  /* Animação de rotação */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Classe para adicionar a animação de rotação */
+.rotating {
+  animation: rotate 0.5s ease-in-out;
+}
+
+  .navbar a {
+    border-radius: 30px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 2px;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .navbar a:hover {
+    background-color: #ffffff;
+    border-radius: 20px;
+    color: rgb(255, 0, 157);
+  }
+/* -------------------------------------------------------------------*/
 body {
     font-family: "Permanent Marker", cursive;
 }
