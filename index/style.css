@@ -48,9 +48,7 @@
 /* -------------------------------------------------------------------*/
 /* -------------------------------------------------NAV BAR------------------*/
   .navbar {
-    background: linear-gradient(to right, rgba(0, 132, 255, 0.9), rgba(0, 162, 255, 0.9));
-    position: fixed;
-    top: 4;
+    background: linear-gradient(to right, rgba(0, 132, 255), rgba(0, 162, 255));
     border-radius: 60px;
     border-color: rgb(0, 217, 255);
     border-style: solid;
@@ -67,6 +65,12 @@
     align-items: center;
     height: 70px; /* Reduz a altura da barra de navegação */
     width: 50%; /* Reduz a largura da barra de navegação */
+    margin-top: 9px;
+    position: fixed;
+    right: 0; /* Alinha à direita */
+    top: 4px;
+    margin-right: 12px;
+    
   }
 
   .navbar img {
@@ -89,21 +93,34 @@
   font-family: "Anonymous Pro", monospace;
     font-weight: 900;
     font-style: normal;
-    font-size: 20px;
-    letter-spacing: -3px;
-  color: #ff00b3;
+    font-size: 35px;
+    letter-spacing: -6px;
+  color: #10A9FF;
   position: fixed; /* Fixa na tela */
   top: 0.5px; /* Alinha com o topo */
-  left: 28%; /* Posiciona à direita da navbar */
   transform: translateX(50%); /* Ajusta precisamente a posição horizontal */
   width: calc(50% - 3px); /* Ajusta a largura considerando a borda da navbar */
+  position: absolute;
+  left: 0; /* Alinha à esquerda */
+  top: 10%; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta para centralizar */
+  width: calc(100% - 50%); /* Ajusta a largura para não sobrepor a navbar */
+  margin-left: 3%;
+  margin-top: 10px;
+}
+.sidebar-text h1 {
+  color: #10A9FF;
+  -webkit-text-stroke: 2.5px white; /* Borda branca ao redor das letras para navegadores WebKit */
+  display: inline-block; /* Para aplicar o padding e border-radius */
+  /* Outros estilos como fonte, tamanho, etc., conforme necessário */
 }
 
 /* Estilos para a linha pontilhada */
 .dotted-line {
-  border-top: 2px dotted #000; /* Cria uma borda superior pontilhada */
+  border-top: 4px dotted #000; /* Cria uma borda superior pontilhada */
   margin-top: 20px; /* Espaçamento acima da linha pontilhada */
-  margin-left: -160%;
+  margin-left: 160px;
+  border-color: #ffffff;
 }
 
   /* Animação de rotação */
@@ -140,7 +157,18 @@
     border-radius: 20px;
     color: rgb(255, 0, 157);
   }
+
+  .content-box-rosa {
+    margin-top: -8px;
+    background-color: #F800C1; /* Cor de fundo rosa */
+    padding: 20px; /* Espaçamento interno */
+    height: 330px; /* Reduz a altura da barra de navegação */
+    width: 100%; /* Reduz a largura da barra de navegação */
+    
+    /* Outros estilos como largura, altura, etc., conforme necessário */
+  }
+  
 /* -------------------------------------------------------------------*/
 body {
-  background-color: #EDFEFF;
+  background-color: #ffffff;
 }
