@@ -1,184 +1,228 @@
 /* -------------------------------------------------FONTES------------------*/
+
+/* Estilo para a fonte "Permanent Marker" */
 .permanent-marker-regular {
   font-family: "Permanent Marker", cursive;
   font-weight: 400;
   font-style: normal;
 }
+
+/* Estilo para a fonte "Indie Flower" */
 .indie-flower-regular {
   font-family: "Indie Flower", cursive;
   font-weight: 400;
   font-style: normal;
 }
 
+/* Estilo para a fonte "Amatic SC" Regular */
 .amatic-sc-regular {
     font-family: "Amatic SC", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
-  .amatic-sc-bold {
+}
+
+/* Estilo para a fonte "Amatic SC" Bold */
+.amatic-sc-bold {
     font-family: "Amatic SC", sans-serif;
     font-weight: 700;
     font-style: normal;
-  }
-  .anonymous-pro-regular {
+}
+
+/* Estilo para a fonte "Anonymous Pro" Regular */
+.anonymous-pro-regular {
     font-family: "Anonymous Pro", monospace;
     font-weight: 400;
     font-style: normal;
-  }
-  
-  .anonymous-pro-bold {
+}
+
+/* Estilo para a fonte "Anonymous Pro" Bold */
+.anonymous-pro-bold {
     font-family: "Anonymous Pro", monospace;
     font-weight: 700;
     font-style: normal;
-  }
-  
-  .anonymous-pro-regular-italic {
+}
+
+/* Estilo para a fonte "Anonymous Pro" Regular Itálico */
+.anonymous-pro-regular-italic {
     font-family: "Anonymous Pro", monospace;
     font-weight: 400;
     font-style: italic;
-  }
-  
-  .anonymous-pro-bold-italic {
+}
+
+/* Estilo para a fonte "Anonymous Pro" Bold Itálico */
+.anonymous-pro-bold-italic {
     font-family: "Anonymous Pro", monospace;
     font-weight: 700;
     font-style: italic;
-  }
-  
+}
+
 /* -------------------------------------------------------------------*/
 /* -------------------------------------------------NAV BAR------------------*/
-  .navbar {
+
+/* Estilos para a Barra de Navegação */
+.navbar {
+    /* Fundo Gradiente */
     background: linear-gradient(to right, rgba(0, 132, 255), rgba(0, 162, 255));
+    /* Borda */
     border-radius: 60px;
     border-color: rgb(0, 217, 255);
     border-style: solid;
     border-width: 4px;
+    /* Sombra */
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+    /* Espaçamento Interno */
     padding: 5px 0;
+    /* Overflow */
     overflow: hidden;
+    /* Fonte */
     font-family: "Amatic SC", sans-serif;
     font-weight: 900;
-    font-style: normal;;
+    font-style: normal;
     font-size: 50px;
+    /* Organização de Elementos Filhos */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px; /* Reduz a altura da barra de navegação */
-    width: 50%; /* Reduz a largura da barra de navegação */
+    /* Tamanho */
+    height: 70px;
+    width: 50%;
+    /* Posicionamento */
     margin-top: 9px;
     position: fixed;
-    right: 0; /* Alinha à direita */
+    right: 0;
     top: 4px;
-    margin-right: 12px;
-    
-  }
 
-  .navbar img {
+}
+
+/* Estilos para Imagem dentro da Barra de Navegação */
+.navbar img {
     height: 60px;
-    margin: 1px 10px; /* Espaçamento ao redor da imagem */
+    margin: 1px 10px;
     vertical-align: middle;
     float: left;
-  }
-  .navbar img, .navbar a {
-    transition: transform 0.3s; /* Animação suave para transformação */
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
-  }
-
-  .navbar img:hover, .navbar a:hover {
-    transform: scale(1.2); /* Aumenta o tamanho em 10% */
-  }
-
-  /* Estilos para o texto ao lado da navbar */
-.sidebar-text {
-  font-family: "Anonymous Pro", monospace;
-    font-weight: 900;
-    font-style: normal;
-    font-size: 35px;
-    letter-spacing: -6px;
-  color: #10A9FF;
-  position: fixed; /* Fixa na tela */
-  top: 0.5px; /* Alinha com o topo */
-  transform: translateX(50%); /* Ajusta precisamente a posição horizontal */
-  width: calc(50% - 3px); /* Ajusta a largura considerando a borda da navbar */
-  position: absolute;
-  left: 0; /* Alinha à esquerda */
-  top: 10%; /* Centraliza verticalmente */
-  transform: translateY(-50%); /* Ajusta para centralizar */
-  width: calc(100% - 50%); /* Ajusta a largura para não sobrepor a navbar */
-  margin-left: 3%;
-  margin-top: 10px;
-}
-.sidebar-text h1 {
-  color: #10A9FF;
-  -webkit-text-stroke: 2.5px white; /* Borda branca ao redor das letras para navegadores WebKit */
-  display: inline-block; /* Para aplicar o padding e border-radius */
-  margin-top: 195px;
-  margin-left: -4%;
-  /* Outros estilos como fonte, tamanho, etc., conforme necessário */
+    /* Transição */
+    transition: transform 0.3s;
+    cursor: pointer;
 }
 
-/* Estilos para a linha pontilhada */
-.dotted-line {
-  border-top: 2px dashed  #000; /* Cria uma borda superior pontilhada */
-  margin-top: -15px; /* Espaçamento acima da linha pontilhada */
-  margin-bottom: 200px;
-  margin-left: -8%;
-  border-color: #ffffff;
-  width: 1900px;
+/* Efeito Hover para Imagem e Links na Barra de Navegação */
+.navbar img:hover, .navbar a:hover {
+    transform: scale(1.2);
 }
 
-  /* Animação de rotação */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Classe para adicionar a animação de rotação */
-.rotating {
-  animation: rotate 0.5s ease-in-out;
-}
-
-  .navbar a {
+/* Estilos para Links na Barra de Navegação */
+.navbar a {
+    /* Borda */
     border-radius: 30px;
     border-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 2px;
+    /* Flutuação */
     float: left;
     display: block;
+    /* Cor e Alinhamento de Texto */
     color: white;
     text-align: center;
+    /* Espaçamento Interno */
     padding: 14px 16px;
-    text-decoration: none;
+    /* Tamanho da Fonte */
     font-size: 17px;
-  }
+    text-decoration: none;
+}
 
-  .navbar a:hover {
+/* Efeito Hover para Links na Barra de Navegação */
+.navbar a:hover {
     background-color: #ffffff;
     border-radius: 20px;
     color: rgb(255, 0, 157);
-  }
+}
 
-  .content-box-rosa {
-    margin-top: -8px;
-    background-color: #F800C1; /* Cor de fundo rosa */
-    padding: 20px; /* Espaçamento interno */
-    height: 330px; /* Reduz a altura da barra de navegação */
-    width: 1900px; /* Reduz a largura da barra de navegação */
-    margin-left: -10%;
-    
-    /* Outros estilos como largura, altura, etc., conforme necessário */
-  }
+/* Estilos para Texto ao Lado da Barra de Navegação */
+.sidebar-text {
+    /* Fonte */
+    font-family: "Anonymous Pro", monospace;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 35px;
+    letter-spacing: -6px;
+    /* Cor do Texto */
+    color: #10A9FF;
+    /* Posicionamento */
+    position: absolute;
+    left: 0;
+    top: 10%;
+    transform: translateY(-50%);
+    width: calc(100% - 50%);
+    margin-left: 29%;
+    margin-top: 80px;
+}
 
-  .sackboy_olhando{
-    margin-left: 10%;
-    margin-top: 95.5px;
-  }
+/* Estilos para Título dentro da Barra de Navegação */
+.sidebar-text h1 {
+    color: #F800C1;
+    -webkit-text-stroke: 2.5px white;
+    display: inline-block;
+    margin-top: 195px;
+    margin-left: -4%;
+    border-radius: 70px; /* Adicionando bordas arredondadas */
+}
+
+/* Estilos para Linha Pontilhada */
+.dotted-line {
+    /* Borda Superior Pontilhada */
+    border-top: 2px dashed  #000;
+    /* Espaçamento */
+    margin-top: -165px;
+    margin-bottom: 200px;
+    margin-left: -80%;
+    /* Cor da Borda */
+    border-color: #ffffff;
   
+    /* Tamanho */
+    width: 1900px;
+}
+
+/* Animação de Rotação */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Classe para Adicionar a Animação de Rotação */
+.rotating {
+    animation: rotate 0.5s ease-in-out;
+}
+
+/* Estilos para Caixa de Conteúdo Rosa */
+.content-box-rosa {
+    /* Espaçamento */
+    margin-top: -8px;
+    /* Cor de Fundo */
+    background-color: #0094E8;
+    /* Espaçamento Interno */
+    padding: 20px;
+    /* Tamanho */
+    height: 230px;
+    width: 1900px;
+    margin-left: -10%;
+    /* Outros Estilos conforme Necessário */
+}
+
+/* Posicionamento do Sackboy Olhando */
+.sackboy_olhando {
+    margin-left: 15%;
+    margin-top: -5px;
+    position: absolute;
+}
+
 /* -------------------------------------------------------------------*/
+
+/* Estilos Globais para o Corpo do Documento */
 body {
-  background-color: #ffffff;
+    /* Cor de Fundo */
+    background-color: #ffffff;
 }
