@@ -117,7 +117,7 @@
 
 /* Estilos para a linha pontilhada */
 .dotted-line {
-  border-top: 4px dotted #000; /* Cria uma borda superior pontilhada */
+  border-top: 3px dashed  #000; /* Cria uma borda superior pontilhada */
   margin-top: 20px; /* Espaçamento acima da linha pontilhada */
   margin-left: 160px;
   border-color: #ffffff;
