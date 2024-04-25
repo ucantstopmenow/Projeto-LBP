@@ -112,15 +112,19 @@
   color: #10A9FF;
   -webkit-text-stroke: 2.5px white; /* Borda branca ao redor das letras para navegadores WebKit */
   display: inline-block; /* Para aplicar o padding e border-radius */
+  margin-top: 195px;
+  margin-left: -4%;
   /* Outros estilos como fonte, tamanho, etc., conforme necessário */
 }
 
 /* Estilos para a linha pontilhada */
 .dotted-line {
-  border-top: 3px dashed  #000; /* Cria uma borda superior pontilhada */
-  margin-top: 20px; /* Espaçamento acima da linha pontilhada */
-  margin-left: 160px;
+  border-top: 2px dashed  #000; /* Cria uma borda superior pontilhada */
+  margin-top: -15px; /* Espaçamento acima da linha pontilhada */
+  margin-bottom: 200px;
+  margin-left: -8%;
   border-color: #ffffff;
+  width: 1900px;
 }
 
   /* Animação de rotação */
@@ -163,9 +167,15 @@
     background-color: #F800C1; /* Cor de fundo rosa */
     padding: 20px; /* Espaçamento interno */
     height: 330px; /* Reduz a altura da barra de navegação */
-    width: 100%; /* Reduz a largura da barra de navegação */
+    width: 1900px; /* Reduz a largura da barra de navegação */
+    margin-left: -10%;
     
     /* Outros estilos como largura, altura, etc., conforme necessário */
+  }
+
+  .sackboy_olhando{
+    margin-left: 10%;
+    margin-top: 95.5px;
   }
   
 /* -------------------------------------------------------------------*/
