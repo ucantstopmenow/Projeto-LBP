@@ -61,38 +61,40 @@
 
 /* Estilos para a Barra de Navegação */
 .navbar {
-    /* Fundo Gradiente */
-    background: linear-gradient(to right, rgba(0, 132, 255), rgba(0, 162, 255));
-    /* Borda */
-    border-radius: 60px;
-    border-color: rgb(0, 217, 255);
-    border-style: solid;
-    border-width: 4px;
-    /* Sombra */
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
-    /* Espaçamento Interno */
-    padding: 5px 0;
-    /* Overflow */
-    overflow: hidden;
-    /* Fonte */
-    font-family: "Amatic SC", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-    font-size: 50px;
-    /* Organização de Elementos Filhos */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* Tamanho */
-    height: 70px;
-    width: 50%;
-    /* Posicionamento */
-    margin-top: 9px;
-    position: fixed;
-    right: 0;
-    top: 4px;
-
+  /* Fundo Gradiente */
+  background: linear-gradient(to right, rgba(0, 132, 255), rgba(0, 162, 255));
+  /* Borda */
+  border-radius: 60px;
+  border-color: rgb(0, 217, 255);
+  border-style: solid;
+  border-width: 4px;
+  /* Sombra */
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
+  /* Espaçamento Interno */
+  padding: 5px 0;
+  /* Overflow */
+  overflow: hidden;
+  /* Fonte */
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 50px;
+  /* Organização de Elementos Filhos */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Tamanho */
+  height: 70px;
+  width: 50%;
+  /* Posicionamento */
+  margin: 9px auto; /* Mudei a margem para automática para centralizar horizontalmente */
+  top: 4px; /* Mantive o topo fixo */
+  left: 25%; /* Defini o lado esquerdo em vez do lado direito */
+  transform: translateX(4%); /* Usei transform para ajustar a posição central */
+  position: absolute;
+  z-index: 999; /* Ajuste o z-index para garantir que a barra de navegação esteja acima dos outros elementos */
 }
+
 
 /* Estilos para Imagem dentro da Barra de Navegação */
 .navbar img {
@@ -137,7 +139,6 @@
     color: rgb(255, 0, 157);
 }
 
-/* Estilos para Texto ao Lado da Barra de Navegação */
 .sidebar-text {
     /* Fonte */
     font-family: "Anonymous Pro", monospace;
@@ -157,13 +158,12 @@
     margin-top: 80px;
 }
 
-/* Estilos para Título dentro da Barra de Navegação */
 .sidebar-text h1 {
     color: #F800C1;
     -webkit-text-stroke: 2.5px white;
     display: inline-block;
     margin-top: 195px;
-    margin-left: -4%;
+    margin-left: -3%;
     border-radius: 70px; /* Adicionando bordas arredondadas */
 }
 
