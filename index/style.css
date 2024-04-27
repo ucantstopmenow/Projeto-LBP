@@ -87,12 +87,12 @@
   height: 70px;
   width: 50%;
   /* Posicionamento */
-  margin: 9px auto; /* Mudei a margem para automática para centralizar horizontalmente */
-  top: 4px; /* Mantive o topo fixo */
-  left: 25%; /* Defini o lado esquerdo em vez do lado direito */
-  transform: translateX(4%); /* Usei transform para ajustar a posição central */
+  margin: 9px auto; 
+  top: 4px;
+  left: 25%; 
+  transform: translateX(4%); 
   position: absolute;
-  z-index: 999; /* Ajuste o z-index para garantir que a barra de navegação esteja acima dos outros elementos */
+  z-index: 999;  
 }
 
 
@@ -130,6 +130,8 @@
     /* Tamanho da Fonte */
     font-size: 17px;
     text-decoration: none;
+    transition: transform 0.3s;
+    transform-origin: center; /* Define o ponto de origem da transformação para o centro */
 }
 
 /* Efeito Hover para Links na Barra de Navegação */
@@ -137,6 +139,12 @@
     background-color: #ffffff;
     border-radius: 20px;
     color: rgb(255, 0, 157);
+}
+/* Estilo para textos na Barra de Navegação */
+.navbar .text {
+    /* Adicionando transição para suavizar a mudança de tamanho */
+    transition: transform 0.3s;
+    transform-origin: center; /* Define o ponto de origem da transformação para o centro */
 }
 
 .sidebar-text {
@@ -159,12 +167,12 @@
 }
 
 .sidebar-text h1 {
-    color: #F800C1;
+    color: #EF589B;
     -webkit-text-stroke: 2.5px white;
     display: inline-block;
     margin-top: 195px;
     margin-left: -3%;
-    border-radius: 70px; /* Adicionando bordas arredondadas */
+    border-radius: 70px; 
 }
 
 /* Estilos para Linha Pontilhada */
@@ -209,12 +217,16 @@
     height: 230px;
     width: 1900px;
     margin-left: -10%;
-    /* Outros Estilos conforme Necessário */
 }
 
 /* Posicionamento do Sackboy Olhando */
 .sackboy_olhando {
     margin-left: 15%;
+    margin-top: -5px;
+    position: absolute;
+}
+.passarin{
+    margin-left: 75%;
     margin-top: -5px;
     position: absolute;
 }
