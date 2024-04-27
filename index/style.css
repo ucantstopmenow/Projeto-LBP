@@ -231,6 +231,12 @@
     position: absolute;
 }
 
+.wallpaper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -8px;
+}
 /* -------------------------------------------------------------------*/
 
 /* Estilos Globais para o Corpo do Documento */
