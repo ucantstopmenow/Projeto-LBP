@@ -166,14 +166,46 @@
     margin-top: 80px;
 }
 
+/* Estilo para o título com efeito arco-íris */
+/* Estilo para o título com efeito arco-íris */
 .sidebar-text h1 {
-    color: #EF589B;
-    -webkit-text-stroke: 2.5px white;
     display: inline-block;
     margin-top: 195px;
     margin-left: -3%;
-    border-radius: 70px; 
+    border-radius: 70px;
+    -webkit-text-stroke: 2.5px white;
+    /* Use a animação rainbow para alterar as cores */
+    transition: transform 0.3s;
+    transform-origin: center; /* Define o ponto de origem da transformação para o centro */
+    color: #EF589B
 }
+
+.sidebar-text h1:hover{
+    transform: scale(1.2);
+    animation: rainbow 10s linear infinite; /* 10s é a duração da animação e linear para uma transição suave */
+
+}
+
+/* Animação para o efeito arco-íris */
+@keyframes rainbow {
+    0%, 100% {
+        color: #EF589B; /* Primeira e última cor */
+    }
+    20% {
+        color: #FF0000; /* Segunda cor */
+    }
+    40% {
+        color: #FF7F00; /* Terceira cor */
+    }
+    60% {
+        color: #FFFF00; /* Quarta cor */
+    }
+    80% {
+        color: #00FF00; /* Quinta cor */
+    }
+}
+
+
 
 /* Estilos para Linha Pontilhada */
 .dotted-line {
@@ -222,7 +254,7 @@
 /* Posicionamento do Sackboy Olhando */
 .sackboy_olhando {
     margin-left: 15%;
-    margin-top: -5px;
+    margin-top: -3.8px;
     position: absolute;
 }
 .passarin{
@@ -243,4 +275,39 @@
 body {
     /* Cor de Fundo */
     background-color: #ffffff;
+    overflow-x: hidden; /* Desabilita a rolagem horizontal */
+}
+
+/* Estilos para o rodapé */
+.footer {
+    background-color: #0094E8; /* Cor de fundo azul */
+    color: white; /* Cor do texto branco */
+    padding: 20px 0; /* Adicionar espaço interno */
+    height: 130px;
+    width: 110%; /* Largura total */
+    margin-left: -10px;
+    margin-top: -60px;
+    position: absolute;
+    z-index: 999;
+    -webkit-text-stroke: 2.5px white;
+    font-size: 45px;
+    /* Use a animação rainbow para alterar as cores */
+    transition: transform 0.3s;
+    transform-origin: center; /* Define o ponto de origem da transformação para o centro */
+    color: #EF589B;
+    font-family: "Anonymous Pro", monospace;
+    letter-spacing: -7px;
+}
+
+.rodapé{
+    margin-top: 40px;
+    margin-left: 50px;
+    transition: transform 0.3s;
+    transform-origin: center; /* Define o ponto de origem da transformação para o centro */
+    color: #EF589B
+}
+
+.rodapé:hover{
+    animation: rainbow 10s linear infinite; /* 10s é a duração da animação e linear para uma transição suave */
+
 }
