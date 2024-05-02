@@ -19,7 +19,7 @@
   
   body{
     width: 100%;
-    height: 105.5vh;
+    height: 106vh;
     background-image: url(../assets/imagens/Pagina\ inicial\ -\ Parte\ 1\ \(3\).png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -27,14 +27,15 @@
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    gap: 45%
   }
 
   .botao_entrar {
-    border: 1px solid black;
     height: 150px;
     background-color: transparent;
     transition: transform 0.3s ease; 
     cursor: pointer;
+    margin-left: 32%;
   }
   
   .botao_entrar:hover {
@@ -42,13 +43,11 @@
   }
 
 .div_incial_superior{
-  border: 1px solid black;
   width: 99%;
-  height: 10%;
+  height: 20%;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  border: 1px solid black;
 }
 
 .flor{
