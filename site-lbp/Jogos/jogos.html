@@ -20,10 +20,24 @@
         </ul>
     </nav>
     <div class="div_meio">
-        <img class="img" src="./imagens/lbp1logo.png" alt="">
-        <img class="img" src="./imagens/lbp2logo.png" alt="">
-        <img class="img" src="./imagens/lbpkartinglogo.png" alt="">
-        <img class="img" src="./imagens/lbp3logo.png" alt="">
+        <img class="img" src="./imagens/lbp1logo.png" onclick="lbp1()">
+        <img class="img" src="./imagens/lbp2logo.png" onclick="lbp2()">
+        <img class="img" src="./imagens/lbpkartinglogo.png" onclick="lbp3()">
+        <img class="img" src="./imagens/lbp3logo.png" onclick="lbp_kart()">
     </div>
 </body>
 </html>
+<script>
+    function lbp1(){
+        window.location.href = "./LBP1/lbp1.html";
+    }
+    function lbp2(){
+        window.location.href = "./LBP2/lbp2.html";
+    }
+    function lbp3(){
+        window.location.href = "./LBP3/lbp3.html";
+    }
+    function lbp_kart(){
+        window.location.href = "./LBP_KART/lbp_kart.html";
+    }
+</script>
