@@ -27,7 +27,7 @@
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    /* position: fixed; */
+    /* position: fixed;   */
   }
 
   .navbar {
