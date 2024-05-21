@@ -45,8 +45,15 @@
   
   .image-2 {
       margin-top: 10px;
+      height: 111vh;
+      margin-left: 1%;
       overflow-y: hidden;
-      background-image: url(./imagens/projeto!\ \(1\).png); /* Substitua pelo caminho da segunda imagem */
+      background-image: url(./imagens/projeto!\ \(1\).png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column; /* Substitua pelo caminho da segunda imagem */
   }
   
     .navbar {
