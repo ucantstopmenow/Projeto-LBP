@@ -30,6 +30,25 @@
       /* position: fixed;   */
     }
   
+  .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+  
+  .image {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  
+  .image-2 {
+      margin-top: 10px;
+      overflow-y: hidden;
+      background-image: url(./imagens/projeto!\ \(1\).png); /* Substitua pelo caminho da segunda imagem */
+  }
+  
     .navbar {
       position: relative;
       margin-top: 10px;
