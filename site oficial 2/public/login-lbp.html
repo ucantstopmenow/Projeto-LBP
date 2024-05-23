@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&amp;family=Caveat:wght@400..700&amp;display=swap" rel="stylesheet">
+        <title>Home</title>
+        <link rel="stylesheet" href="../css/login.css">
+        <link rel="icon" href="./imagens/sun.png" type="image/png">
+    
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul>
+                <li><a class="inicio" href="./home.html">Início</a></li>
+                <li><a class="login" href="./login-lbp.html">Login</a></li>
+                <li><a class="jogos" href="./jogos.html">Jogos</a></li>
+                <li><a class="projeto" href="./projeto.html">Projeto</a></li>
+            </ul>
+        </nav>
+        <div class="login2">
+            <p>Digite seu Nickname:</p>
+            <input class="inputs" type="text" id="nickname_input">
+            <p>Digite seu Email:</p>
+            <input class="inputs" type="text" id="email_input">
+            <p>Digite sua Senha:</p>
+            <input class="inputs" type="password" id="senha_input">
+            <div class="botoes">
+                <button class="botao" onclick="entrar()">Entrar</button>
+                <button class="botao_cadastrar" onclick="cadastrar()">Cadastrar-se</button>
+            </div>
+         
+    
+            <div class="erro" id="erro">
+                <p></p>
+            </div>
+    <script>
+    
+      function cadastrar(){
+        window.location="./cadastro-lbp.html";
+      }
+      
+      function entrar() {
+            aguardar();
+    
+            var emailVar = email_input.value;
+            var senhaVar = senha_input.value;
+    
+            if (emailVar == "" || senhaVar == "") {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+                finalizarAguardar();
+                return false;
+            }
+            else {
+                setInterval(sumirMensagem, 5000)
+            }
+    
+            console.log("FORM LOGIN: ", emailVar);
+            console.log("FORM SENHA: ", senhaVar);
+    
+            fetch("/usuarios/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+                console.log("ESTOU NO THEN DO entrar()!")
+    
+                if (resposta.ok) {
+                    console.log(resposta);
+    
+                    resposta.json().then(json => {
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.ID_USUARIO = json.id;
+                        sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+    
+                        setTimeout(function () {
+                            window.location = "./dashboard/cards.html";
+                        }, 1000); // apenas para exibir o loading
+    
+                    });
+    
+                } else {
+    
+                    console.log("Houve um erro ao tentar realizar o login!");
+    
+                    resposta.text().then(texto => {
+                        console.error(texto);
+                        finalizarAguardar(texto);
+                    });
+                }
+    
+            }).catch(function (erro) {
+                console.log(erro);
+            })
+    
+            return false;
+        }
+    
+        function sumirMensagem() {
+            cardErro.style.display = "none"
+        }
+    
+    </script>
+</body>
+</html>

@@ -79,6 +79,6 @@ body{
 }
 
 .img:hover{
-    transform: scale(1.2); /* Adiciona uma escala de 1.1 para a imagem */
+    transform: scale(1.1); /* Adiciona uma escala de 1.1 para a imagem */
     cursor: pointer;
 }
