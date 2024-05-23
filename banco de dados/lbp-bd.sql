@@ -4,7 +4,7 @@ use lbp;
 -- Tabela de usuários
 CREATE TABLE Usuario (
     idUser INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100) not null,
+    nickname VARCHAR(100) UNIQUE not null,
     email VARCHAR(100) UNIQUE,
     senha VARCHAR(100) not null
 );
@@ -15,5 +15,5 @@ CREATE TABLE Mensagem (
     fkUser INT,
     Mensagem VARCHAR(600),
     DataCriacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (fkUser) REFERENCES Usuarios(idUser)
+    FOREIGN KEY (fkUser) REFERENCES Usuario(idUser)
 );
