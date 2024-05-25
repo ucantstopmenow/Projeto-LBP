@@ -8,13 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <title>Home</title>
     <link rel="stylesheet" href="./assets/css/cadastro.css">
+    <script src="../js/sessao.js"></script>
     <link rel="icon" href="./imagens/sun.png" type="image/png">
 
 </head>
 <body>
     <nav class="navbar">
         <ul>
-            <li><a class="inicio" href="./home.html">Início</a></li>
+            <li><a class="inicio" href="./index.html">Início</a></li>
             <li><a class="login" href="./login-lbp.html">Login</a></li>
             <li><a class="jogos" href="./jogos.html">Jogos</a></li>
             <li><a class="projeto" href="./projeto.html">Projeto</a></li>
@@ -23,7 +24,7 @@
     <div class="conteudo">
       <div class="lado-esquerdo">
         <p>Digite seu Nickname:</p>
-        <input class="inputs" type="text" id="nickname_input">
+        <input class="inputs" type="text" id="nome_input">
         <p>Digite seu Email:</p>
         <input class="inputs" type="text" id="email_input">
       </div>
@@ -49,13 +50,11 @@
       var emailVar = email_input.value;
       var senhaVar = senha_input.value;
       var confirmacaoSenhaVar = confirmacao_senha_input.value;
-      var empresaVar = listaEmpresas.value
       if (
         nomeVar == "" ||
         emailVar == "" ||
         senhaVar == "" ||
-        confirmacaoSenhaVar == "" ||
-        empresaVar == ""
+        confirmacaoSenhaVar == ""
       ) {
         cardErro.style.display = "block";
         mensagem_erro.innerHTML =
@@ -79,7 +78,6 @@
           nomeServer: nomeVar,
           emailServer: emailVar,
           senhaServer: senhaVar,
-          empresaServer: empresaVar
         }),
       })
         .then(function (resposta) {
@@ -109,21 +107,21 @@
       return false;
     }
   
-    function listar() {
-      fetch("/empresas/listar", {
-        method: "GET",
-      })
-        .then(function (resposta) {
-          resposta.json().then((empresas) => {
-            empresas.forEach((empresa) => {
-              listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
-            });
-          });
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-    }
+    // function listar() {
+    //   fetch("/empresas/listar", {
+    //     method: "GET",
+    //   })
+    //     .then(function (resposta) {
+    //       resposta.json().then((empresas) => {
+    //         empresas.forEach((empresa) => {
+    //           listaEmpresas.innerHTML += `<option value='${empresa.id}'>${empresa.cnpj}</option>`;
+    //         });
+    //       });
+    //     })
+    //     .catch(function (resposta) {
+    //       console.log(`#ERRO: ${resposta}`);
+    //     });
+    // }
   
     function sumirMensagem() {
       cardErro.style.display = "none";
