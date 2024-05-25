@@ -16,8 +16,9 @@ body{
     position: relative;
     margin-top: 10px;
     position: relative;
+
   }
-  
+
   .navbar ul {
     list-style-type: none;
     margin: 0;
@@ -57,7 +58,7 @@ body{
 }
 
 .navbar a:hover {
-    color: #000000;
+    color: #000000;  
 }
 
 .div_meio{
