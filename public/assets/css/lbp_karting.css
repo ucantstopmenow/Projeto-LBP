@@ -20,7 +20,7 @@
     body{
       width: 100%;
       height: 111vh;
-      background-image: url(../assets/lbpkart.png);
+      background-image: url(../lbpkart.png);
       background-repeat: no-repeat;
       background-size: 100%;
       overflow-y: scroll;
