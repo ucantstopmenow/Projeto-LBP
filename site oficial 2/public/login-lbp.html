@@ -27,7 +27,6 @@
             <input class="inputs" type="text" id="email_input">
             <p>Digite sua Senha:</p>
             <input class="inputs" type="password" id="senha_input">
-            <div class="mensagem_erro"></div>
             <div class="botoes">
                 <button class="botao" onclick="entrar()">Entrar</button>
                 <button class="botao_cadastrar" onclick="cadastrar()">Cadastrar-se</button>
@@ -41,17 +40,15 @@
     
       function cadastrar(){
         window.location="./cadastro-lbp.html";
-
       }
       
       function entrar() {
             aguardar();
-
-            var nickVar = nickname_input.value;
+    
             var emailVar = email_input.value;
             var senhaVar = senha_input.value;
     
-            if (emailVar == "" || senhaVar == "" || nickVar == "") {
+            if (emailVar == "" || senhaVar == "") {
                 cardErro.style.display = "block"
                 mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
                 finalizarAguardar();
@@ -63,7 +60,6 @@
     
             console.log("FORM LOGIN: ", emailVar);
             console.log("FORM SENHA: ", senhaVar);
-            console.log("FORM NICK: ", nickVar);
     
             fetch("/usuarios/autenticar", {
                 method: "POST",
@@ -71,7 +67,6 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    nickServer: nickVar,
                     emailServer: emailVar,
                     senhaServer: senhaVar
                 })
@@ -87,6 +82,7 @@
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.id;
+                        sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
     
                         setTimeout(function () {
                             window.location = "./dashboard/cards.html";
