@@ -20,7 +20,7 @@
     body{
       width: 100%;
       height: 111vh;
-      background-image: url(./projeto.css);
+      background-image: url(../projeto!.png);
       background-repeat: no-repeat;
       background-size: 100%;
       overflow-y: scroll;
@@ -48,7 +48,7 @@
       height: 111vh;
       margin-left: -0.5%;
       overflow-y: hidden;
-      background-image: url(../assets/projeto2!.png);
+      background-image: url(../projeto2!.png);
       background-repeat: no-repeat;
       background-size: 100%;
       overflow-x: hidden;
