@@ -36,6 +36,7 @@
         <input class="inputs" type="password" id="confirmacao_senha_input">
       </div>
     </div>
+    <div class="mensagem_erro_vazio"></div>
     <button class="botao" onclick="cadastrar()">Cadastrar-se</button>
   
 </body>
@@ -56,14 +57,11 @@
         senhaVar == "" ||
         confirmacaoSenhaVar == ""
       ) {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML =
-          "(Mensagem de erro para todos os campos em branco)";
+        mensagem_erro_vazio.innerHTML =
+          "Por favor preencha todos os campos ;)";
   
         finalizarAguardar();
         return false;
-      } else {
-        setInterval(sumirMensagem, 5000);
       }
   
       // Enviando o valor da nova input
@@ -84,13 +82,12 @@
           console.log("resposta: ", resposta);
   
           if (resposta.ok) {
-            cardErro.style.display = "block";
   
-            mensagem_erro.innerHTML =
+            mensagem_erro_vazio.innerHTML =
               "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
   
             setTimeout(() => {
-              window.location = "login.html";
+              window.location = "login-lbp.html";
             }, "2000");
   
             limparFormulario();
@@ -122,8 +119,4 @@
     //       console.log(`#ERRO: ${resposta}`);
     //     });
     // }
-  
-    function sumirMensagem() {
-      cardErro.style.display = "none";
-    }
   </script>

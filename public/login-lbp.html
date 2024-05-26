@@ -15,7 +15,7 @@
     <body>
         <nav class="navbar">
             <ul>
-                <li><a class="inicio" href="./home.html">Início</a></li>
+                <li><a class="inicio" href="./index.html">Início</a></li>
                 <li><a class="login" href="./login-lbp.html">Login</a></li>
                 <li><a class="jogos" href="./jogos.html">Jogos</a></li>
                 <li><a class="projeto" href="./projeto.html">Projeto</a></li>
@@ -29,6 +29,7 @@
             <input class="inputs" type="password" id="senha_input">
 
             <div class="botoes">
+                <div class="mensagem_erro"></div>
                 <button class="botao" onclick="entrar()">Entrar</button>
                 <button class="botao_cadastrar" onclick="cadastrar()">Cadastrar-se</button>
             </div>
@@ -45,13 +46,9 @@
             var senhaVar = senha_input.value;
     
             if (emailVar == "" || senhaVar == "") {
-                cardErro.style.display = "block"
-                mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+                mensagem_erro.innerHTML = "Por favor, preencha todos os campos ;)";
                 finalizarAguardar();
                 return false;
-            }
-            else {
-                setInterval(sumirMensagem, 5000)
             }
     
             console.log("FORM LOGIN: ", emailVar);
@@ -96,10 +93,6 @@
             })
     
             return false;
-        }
-    
-        function sumirMensagem() {
-            cardErro.style.display = "none"
         }
     
     </script>
