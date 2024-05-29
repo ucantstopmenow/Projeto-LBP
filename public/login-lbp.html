@@ -8,9 +8,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&amp;family=Caveat:wght@400..700&amp;display=swap" rel="stylesheet">
         <title>Home</title>
         <link rel="stylesheet" href="./assets//css/login.css">
-        <script src="../js/sessao.js"></script>
         <link rel="icon" href="./imagens/sun.png" type="image/png">
-    
     </head>
     <body>
         <nav class="navbar">
@@ -77,19 +75,17 @@
                 console.log("ESTOU NO THEN DO entrar()!")
     
                 if (resposta.ok) {
-                    console.log(resposta);                    
+                    mensagem_erro.innerHTML = "Login realizado com sucesso :D Redirecionando para o Blog...";
+                    window.location = "blog.html";  
+                    console.log(resposta);    
+
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
                         sessionStorage.EMAIL_USUARIO = json.email;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.ID_USUARIO = json.idUsuario;
-    
                     });
-                    mensagem_erro.innerHTML = "Login realizado com sucesso :D Redirecionando para o Blog...";
-                    setTimeout(() => {
-                        window.location = "blog.html";
-                    }, "2000");    
 
                 } else {
     

@@ -2,6 +2,10 @@ create database lbp;
 -- drop database lbp;
 use lbp;
 
+-- drop table usuario;
+
+-- 29 de Maio
+
 CREATE TABLE usuario (
     idUsuario int PRIMARY KEY auto_increment,
     nome VARCHAR(255) NOT NULL,
@@ -30,3 +34,5 @@ CREATE TABLE comentario (
 );
 
 select * from usuario;
+
+SELECT idUsuario, nome, email FROM usuario
