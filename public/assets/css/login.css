@@ -145,3 +145,10 @@
   transition: transform 0.3s ease; /* Adiciona uma transição suave */
   margin-left: 10px;
 }
+
+.mensagem_erro{
+  color: red;
+  font-size: 27px;
+  font-weight: 700;
+  font-style: normal;
+}
