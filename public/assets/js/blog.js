@@ -81,8 +81,8 @@ function createPostElement(post) {
     return postElement;
 }
 
-function likePost(postId, likeIcon) {
-    fetch(`/likePost/${postId}`, {
+function likePost(idPost, likeIcon) {
+    fetch(`/likePost/${idPost}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -100,14 +100,14 @@ function showCommentSection(postId) {
     const commentSection = document.getElementById(`comments-${postId}`);
     if (commentSection.style.display === 'none') {
         commentSection.style.display = 'block';
-        loadComments(postId);
+        loadComments(idPost);
     } else {
         commentSection.style.display = 'none';
     }
 }
 
-function loadComments(postId) {
-    fetch(`/getComments/${postId}`, {
+function loadComments(idPost) {
+    fetch(`/getComments/${idPost}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -115,7 +115,7 @@ function loadComments(postId) {
     })
     .then(response => response.json())
     .then(comments => {
-        const commentSection = document.getElementById(`comments-${postId}`);
+        const commentSection = document.getElementById(`comments-${idPost}`);
         commentSection.innerHTML = ''; // Limpa os comentários antigos
         comments.forEach(comment => {
             const commentElement = document.createElement('div');
@@ -143,7 +143,7 @@ function loadComments(postId) {
 
         const commentButton = document.createElement('button');
         commentButton.textContent = 'Enviar';
-        commentButton.onclick = () => addComment(postId, commentContent);
+        commentButton.onclick = () => addComment(idPost, commentContent);
 
         newComment.appendChild(userName);
         newComment.appendChild(commentContent);
@@ -154,11 +154,11 @@ function loadComments(postId) {
     .catch(error => console.error('Erro ao carregar comentários:', error));
 }
 
-function addComment(postId, commentContent) {
+function addComment(idPost, commentContent) {
     const content = commentContent.value;
     if (content.trim() === '') return;
 
-    fetch(`/addComment/${postId}`, {
+    fetch(`/addComment/${idPost}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -167,7 +167,7 @@ function addComment(postId, commentContent) {
     })
     .then(response => {
         if (response.ok) {
-            loadComments(postId);
+            loadComments(idPost);
         }
     })
     .catch(error => console.error('Erro ao adicionar comentário:', error));
