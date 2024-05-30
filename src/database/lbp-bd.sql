@@ -16,16 +16,16 @@ CREATE TABLE usuario (
 
 CREATE TABLE post (
     idPost int PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
     conteudo TEXT NOT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkUsuario INT,
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
-CREATE TABLE comentario (
-    idComentario SERIAL PRIMARY KEY,
+CREATE TABLE interacao (
+    idInteracao SERIAL PRIMARY KEY,
     conteudo TEXT NOT NULL,
+    curtida int,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkUsuario INT,
     fkPost INT,
