@@ -33,6 +33,18 @@ function executar(instrucao) {
     });
 }
 
+// function executar(query) {
+//     return new Promise((resolve, reject) => {
+//         connection.query(query, function (err, results) {
+//             if (err) {
+//                 return reject(err);
+//             }
+//             resolve(results);
+//         });
+//     });
+// }
+
+
 module.exports = {
     executar
 };
