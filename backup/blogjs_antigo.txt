@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', loadPosts);
 
 function loadPosts() {
+    // Esta função irá carregar os posts do banco de dados
     fetch('/getPosts', {
         method: 'GET',
         headers: {
@@ -10,7 +11,6 @@ function loadPosts() {
     .then(response => response.json())
     .then(posts => {
         const postsContainer = document.getElementById('posts');
-        postsContainer.innerHTML = ''; // Limpa os posts antigos
         posts.forEach(post => {
             postsContainer.appendChild(createPostElement(post));
         });
@@ -100,7 +100,7 @@ function showCommentSection(postId) {
     const commentSection = document.getElementById(`comments-${postId}`);
     if (commentSection.style.display === 'none') {
         commentSection.style.display = 'block';
-        loadComments(postId);
+        loadComments(idPost);
     } else {
         commentSection.style.display = 'none';
     }
