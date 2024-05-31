@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', loadPosts);
+loadPosts()
 
 function loadPosts() {
     fetch('/getPosts', {

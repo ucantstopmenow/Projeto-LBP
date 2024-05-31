@@ -1,13 +1,13 @@
-create database lbp;
+CREATE DATABASE lbp;
 -- drop database lbp;
-use lbp;
+USE lbp;
 
--- drop table usuario;
-
--- 29 de Maio
+-- drop table if exists usuario;
+-- drop table if exists post;
+-- drop table if exists interacao;
 
 CREATE TABLE usuario (
-    idUsuario int PRIMARY KEY auto_increment,
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE post (
-    idPost int PRIMARY KEY,
+    idPost INT PRIMARY KEY AUTO_INCREMENT,
     conteudo TEXT NOT NULL,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkUsuario INT,
@@ -23,9 +23,9 @@ CREATE TABLE post (
 );
 
 CREATE TABLE interacao (
-    idInteracao SERIAL PRIMARY KEY,
+    idInteracao INT PRIMARY KEY AUTO_INCREMENT,
     conteudo TEXT NOT NULL,
-    curtida int,
+    curtida INT DEFAULT 0,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fkUsuario INT,
     fkPost INT,
@@ -33,8 +33,19 @@ CREATE TABLE interacao (
     FOREIGN KEY (fkPost) REFERENCES post(idPost)
 );
 
-select * from usuario;
-select * from interacao;
-select * from post;
+-- Inserção de teste na tabela usuario
+INSERT INTO usuario (nome, email, senha)
+VALUES ('João Silva', 'joao@example.com', 'senha123');
 
-SELECT idUsuario, nome, email FROM usuario
+-- Inserção de teste na tabela post
+INSERT INTO post (conteudo, fkUsuario)
+VALUES ('Este é o conteúdo do primeiro post', 1);
+
+-- Inserção de teste na tabela interacao
+INSERT INTO interacao (conteudo, curtida, fkUsuario, fkPost)
+VALUES ('Comentário no primeiro post', 1, 1, 1);
+
+-- Selecionar dados para verificação
+SELECT * FROM usuario;
+SELECT * FROM post;
+SELECT * FROM interacao;
