@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <title>Blog</title>
+    <link rel="stylesheet" href="./assets//css/quiz.css">
+    <link rel="icon" href="./imagens/sun.png" type="image/png">
+</head>
+    <nav class="navbar">
+        <ul>
+            <li><a class="inicio" href="./index.html">Início</a></li>
+            <li><a class="jogos" href="./jogos.html">Jogos</a></li>
+            <li><a class="projeto" href="./projeto.html">Projeto</a></li>
+            <li><a class="dashboard" href="./dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="conteudo">
+        <div id="quiz-container"></div>
+        <div id="results" class="results"></div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const questions = [
+            {
+                question: "Quem é o personagem principal de Little Big Planet?",
+                answers: ["Mario", "Sonic", "Sackboy", "Link"],
+                correct: 2
+            },
+            {
+                question: "Em qual console Little Big Planet foi lançado primeiro?",
+                answers: ["Xbox 360", "PlayStation 3", "Wii", "Nintendo Switch"],
+                correct: 1
+            },
+            // Adicione mais perguntas conforme necessário
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+
+        function showQuestion(index) {
+            const questionData = questions[index];
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = '';
+
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question-container');
+
+            const questionText = document.createElement('div');
+            questionText.classList.add('question');
+            questionText.textContent = questionData.question;
+            questionElement.appendChild(questionText);
+
+            questionData.answers.forEach((answer, i) => {
+                const answerElement = document.createElement('div');
+                answerElement.classList.add('answer');
+                answerElement.textContent = answer;
+                answerElement.addEventListener('click', () => handleAnswer(i));
+                questionElement.appendChild(answerElement);
+            });
+
+            quizContainer.appendChild(questionElement);
+        }
+
+        function handleAnswer(selectedIndex) {
+            const questionData = questions[currentQuestionIndex];
+            console.log(`Pergunta: ${questionData.question}`);
+            console.log(`Resposta selecionada: ${questionData.answers[selectedIndex]}`);
+            console.log(`Resposta correta: ${questionData.answers[questionData.correct]}`);
+            if (selectedIndex === questionData.correct) {
+                correctAnswers++;
+                console.log('Resposta correta!');
+            } else {
+                console.log('Resposta incorreta.');
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(currentQuestionIndex);
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.textContent = `Parabéns! Você acertou ${correctAnswers} de ${questions.length} perguntas.`;
+
+            // Enviar resultados para o servidor
+            fetch('/saveQuizResults', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ correctAnswers: correctAnswers })
+            })
+            // .then(response => response.json())
+            // .then(data => console.log('Resultados salvos:', data))
+            // .catch(error => console.error('Erro ao salvar resultados:', error));
+        }
+
+        showQuestion(currentQuestionIndex);
+    });
+</script>
+</html>
+    

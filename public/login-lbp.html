@@ -47,18 +47,7 @@
                 mensagem_erro.innerHTML = "Por favor, preencha todos os campos ;)";
                 return false;
             }
-            if (emailVar.indexOf('@') == -1) {
-                mensagem_erro.innerHTML = "Ei! faltou o @ no email xD";
-                return false;
-            }
-            if (senhaVar.length < 8) {
-                mensagem_erro.innerHTML = "Sua senha deve conter no mínimo 8 caractéres ^^";
-                return false;
-            }
-            if (senhaVar.indexOf('@' || '#' || '$' || '%' || '&') == -1) {
-                mensagem_erro.innerHTML = "Lembre-se de colocar um caractére especial!";
-                return false;
-            }
+            
             console.log("FORM LOGIN: ", emailVar);
             console.log("FORM SENHA: ", senhaVar);
     
@@ -76,7 +65,7 @@
     
                 if (resposta.ok) {
                     mensagem_erro.innerHTML = "Login realizado com sucesso :D Redirecionando para o Blog...";
-                    window.location = "blog.html";  
+                    window.location = "quiz.html";  
                     console.log(resposta);    
 
                     resposta.json().then(json => {
