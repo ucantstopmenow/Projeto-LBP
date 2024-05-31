@@ -34,5 +34,7 @@ CREATE TABLE interacao (
 );
 
 select * from usuario;
+select * from interacao;
+select * from post;
 
 SELECT idUsuario, nome, email FROM usuario

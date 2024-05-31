@@ -1,7 +1,10 @@
 var express = require("express");
 var router = express.Router();
+const app = express();
 
 var blogController = require("../controllers/blogController");
+// Middleware para analisar o corpo das requisições como JSON
+app.use(express.json());
 
 // Rota para obter todas as postagens
 router.get("/getPosts", function (req, res) {
@@ -27,5 +30,8 @@ router.get("/getComments/:id", function (req, res) {
 router.post("/addComment/:id", function (req, res) {
     blogController.addComment(req, res);
 });
+
+// Servir arquivos estáticos (se necessário)
+app.use(express.static('public'));
 
 module.exports = router;
