@@ -77,23 +77,29 @@
     color: #000000;
 }
 
-.botao_cadastrar{
-margin-top: 20px;
-margin-bottom: 5px;
-width: 150px;
-border: solid 2px black;
-border-radius: 15px;
-padding: 7px;
-font-size: 20px;
-background-color: #1abc9c;
-transition: transform 0.3s ease; /* Adiciona uma transição suave */
-
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.botao_cadastrar:hover{
-background-color: #12cea8;
-color: white;
-transform: scale(1.2); /* Adiciona uma escala de 1.1 para a imagem */
-cursor: pointer;
-transition: transform 0.3s ease; /* Adiciona uma transição suave */
+.kpis {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.kpi {
+  background-color: #fff;
+  padding: 10px;
+  margin: 5px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  width: 200px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.chart-container {
+  width: 80%;
 }

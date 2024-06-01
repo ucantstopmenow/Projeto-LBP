@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
     <title>Dashboard</title>
     <link rel="stylesheet" href="./assets//css/dashboard.css">
-    <script src="../js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="icon" href="./imagens/sun.png" type="image/png">
 </head>
 <body>
@@ -20,5 +20,15 @@
             <li><a class="projeto" href="./projeto.html">Projeto</a></li>
         </ul>
     </nav>
+    <div class="dashboard">
+        <div class="kpis">
+            <div id="winPercentage" class="kpi">% de vitórias: 0%</div>
+            <div id="totalPlayers" class="kpi">Total de jogadores: 0</div>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+    <script src="./assets/js/dasboard.js"></script>
 </body>
 </html>
