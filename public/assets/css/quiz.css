@@ -77,22 +77,20 @@
       color: #000000;
   }
 
-.botao_cadastrar{
-  margin-top: 20px;
-  margin-bottom: 5px;
+.reset-button{
   width: 150px;
   border: solid 2px black;
   border-radius: 15px;
   padding: 7px;
-  font-size: 20px;
-  background-color: #1abc9c;
+  font-size: 15px;
+  background-color: #fcff34;
   transition: transform 0.3s ease; /* Adiciona uma transição suave */
 
 }
 
-.botao_cadastrar:hover{
-  background-color: #12cea8;
-  color: white;
+.reset-button:hover{
+  background-color: #fdf900;
+  color: rgb(0, 0, 0);
   transform: scale(1.2); /* Adiciona uma escala de 1.1 para a imagem */
   cursor: pointer;
   transition: transform 0.3s ease; /* Adiciona uma transição suave */

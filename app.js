@@ -49,9 +49,9 @@ db.connect(err => {
 
 
 app.post('/saveQuizResults', (req, res) => {
-    const { correctAnswers } = req.body;
-    const sql = 'INSERT INTO quiz_results (resposta_correta) VALUES (?)';
-    db.query(sql, [correctAnswers], (err, result) => {
+    const {quizId, userId, correctAnswers } = req.body;
+    const sql = 'INSERT INTO quiz_results (fkQuiz, fkUsuario, resposta_correta) VALUES (?, ?, ?)';
+    db.query(sql, [quizId, userId, correctAnswers], (err, result) => {
         if (err) {
             console.error('Erro ao salvar resultados no banco de dados:', err);
             res.status(500).send('Erro ao salvar resultados');

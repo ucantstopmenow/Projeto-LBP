@@ -21,10 +21,13 @@
     <div class="conteudo">
         <div id="results" class="results"></div>
         <div id="quiz-container"></div>
+        <button class="reset-button" onclick="resetQuiz()">Tentar Novamente!</button>
     </div>
 </body>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        const quizId = 1; 
+        const userId = 1;
         const questions = [
             {
                 question: "Quem é o personagem principal de Little Big Planet?",
@@ -132,13 +135,16 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ correctAnswers: correctAnswers })
+                body: JSON.stringify({quizId: quizId, userId: userId, correctAnswers: correctAnswers })
             })
             .then(response => response.json())
             .then(data => console.log('Resultados salvos:', data))
             .catch(error => console.error('Erro ao salvar resultados:', error));
         }
-
+            window.resetQuiz = function() {
+                location.reload();
+            }
+            
         showQuestion(currentQuestionIndex);
     });
 </script>
