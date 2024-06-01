@@ -19,8 +19,8 @@
         </ul>
     </nav>
     <div class="conteudo">
-        <div id="quiz-container"></div>
         <div id="results" class="results"></div>
+        <div id="quiz-container"></div>
     </div>
 </body>
 <script>
@@ -36,9 +36,47 @@
                 answers: ["Xbox 360", "PlayStation 3", "Wii", "Nintendo Switch"],
                 correct: 1
             },
-            // Adicione mais perguntas conforme necessário
+            {
+                question: "Quem é o vilão de Little Big Planet 2?",
+                answers: ["Lich", "The Collector", "Negativitron", "Vex"],
+                correct: 2
+            },
+            {
+                question: "Qual destes locais, SackBoy nunca foi?",
+                answers: ["Avalonia", "Eve's Asylum", "Da Vinci's Hideout", "The Factory of End"],
+                correct: 3
+            },
+            {
+                question: "Quem é o primeiro personagem desbloqueado em Little Big Planet 3?",
+                answers: ["Zom Zom", "Toggle", "Swoop", "OddSock"],
+                correct: 3
+            },
+            {
+                question: "Quem é o personagem que aparece no tutorial em Little Big Planet 2?",
+                answers: ["Larry da Vinci", "Eve", "Rei", "Newton"],
+                correct: 0
+            },
+            {
+                question: "Em qual console SackBoy: A big adventure foi lançado?",
+                answers: ["Xbox Series X", "PlayStation 4", "PSVITA", "PlayStation 5"],
+                correct: 3
+            },
+            {
+                question: "Quem é o vilão de Little Big Planet 3?",
+                answers: ["Newton", "The Collector", "Negativitron", "Vex"],
+                correct: 0
+            },
+            {
+                question: "Qual foi o último jogo lançado da franquia?",
+                answers: ["Little Big Planet 3", "Little Big Planet Karting", "Little Big Planet 4", "SackBoy: A big adventure"],
+                correct: 0
+            },
+            {
+                question: "Qual personagem o SackBoy nunca ganhou skin?",
+                answers: ["Nathan Drake", "Kratos", "Sonic", "Master Chief"],
+                correct: 3
+            },
         ];
-
         let currentQuestionIndex = 0;
         let correctAnswers = 0;
 
@@ -70,7 +108,6 @@
             const questionData = questions[currentQuestionIndex];
             console.log(`Pergunta: ${questionData.question}`);
             console.log(`Resposta selecionada: ${questionData.answers[selectedIndex]}`);
-            console.log(`Resposta correta: ${questionData.answers[questionData.correct]}`);
             if (selectedIndex === questionData.correct) {
                 correctAnswers++;
                 console.log('Resposta correta!');
@@ -97,9 +134,9 @@
                 },
                 body: JSON.stringify({ correctAnswers: correctAnswers })
             })
-            // .then(response => response.json())
-            // .then(data => console.log('Resultados salvos:', data))
-            // .catch(error => console.error('Erro ao salvar resultados:', error));
+            .then(response => response.json())
+            .then(data => console.log('Resultados salvos:', data))
+            .catch(error => console.error('Erro ao salvar resultados:', error));
         }
 
         showQuestion(currentQuestionIndex);

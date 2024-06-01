@@ -2,10 +2,6 @@ CREATE DATABASE lbp;
 -- drop database lbp;
 USE lbp;
 
--- drop table if exists usuario;
--- drop table if exists post;
--- drop table if exists interacao;
-
 CREATE TABLE usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
@@ -20,4 +16,6 @@ CREATE TABLE quiz_results (
     data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+select * from quiz_results;
+-- truncate table quiz_results;
 
