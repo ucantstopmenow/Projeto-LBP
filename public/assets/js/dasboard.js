@@ -32,10 +32,10 @@ function updateKPIs(correctPercentage, totalPlayers) {
 // Função para buscar dados do servidor
 async function fetchQuizData() {
     try {
-        const response = await fetch('http://localhost:3333/quizData'); // Certifique-se de que esta URL está correta
+        const response = await fetch('http://localhost:3333/quizData'); 
         const data = await response.json();
         
-        console.log('Dados recebidos:', data); // Verifique os dados recebidos
+        console.log('Dados recebidos:', data); 
         
         const correctPercentage = data.correctPercentage;
         const totalPlayers = data.totalPlayers;
