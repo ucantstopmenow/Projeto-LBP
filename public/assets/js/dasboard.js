@@ -1,7 +1,3 @@
-// Dados iniciais (Exemplo)
-// let winPercentage = 75; // Porcentagem de vitórias
-// let totalPlayers = 100; // Total de jogadores
-// let attemptsData = [5, 10, 15, 20, 25, 30, 35]; // Número de tentativas ao longo dos dias da semana
 
 // Configuração do gráfico
 const ctx = document.getElementById('myChart').getContext('2d');
@@ -29,19 +25,29 @@ const myChart = new Chart(ctx, {
 
 // Atualização das KPI's
 function updateKPIs(correctPercentage, totalPlayers) {
-    document.getElementById('winPercentage').innerText = `${correctPercentage}%`;
+    document.getElementById('correctPercentage').innerText = `${correctPercentage}%`;
     document.getElementById('totalPlayers').innerText = `${totalPlayers}`;
 }
 
 // Função para buscar dados do servidor
 async function fetchQuizData() {
     try {
-        const response = await fetch('http://localhost:3333/quizData');
+        const response = await fetch('http://localhost:3333/quizData'); // Certifique-se de que esta URL está correta
         const data = await response.json();
-
+        
+        console.log('Dados recebidos:', data); // Verifique os dados recebidos
+        
         const correctPercentage = data.correctPercentage;
         const totalPlayers = data.totalPlayers;
-        const attemptsData = JSON.parse(data.attemptsData);
+        
+        let attemptsData;
+        try {
+            // Tente parsear attemptsData se for uma string JSON
+            attemptsData = JSON.parse(data.attemptsData);
+        } catch (e) {
+            // Se falhar, use diretamente
+            attemptsData = data.attemptsData;
+        }
 
         // Atualizar gráfico
         myChart.data.datasets[0].data = attemptsData;
@@ -53,3 +59,8 @@ async function fetchQuizData() {
         console.error('Erro ao buscar dados do quiz:', error);
     }
 }
+
+// Chame a função para buscar os dados ao carregar a página
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchQuizData();
+});

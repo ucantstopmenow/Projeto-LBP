@@ -32,4 +32,19 @@ select * from quiz;
 -- truncate table quiz_results;
 
 insert into quiz (nome_quiz, descricao) values
-("lbp", "primeiro quiz")
+("lbp", "primeiro quiz");
+INSERT INTO usuario (nome, email, senha) VALUES ('Usuário 1', 'usuario1@example.com', 'senha123');
+INSERT INTO quiz_results (fkQuiz, fkUsuario, resposta_correta) VALUES (1, 1, 1), (1, 1, 0), (1, 1, 1);
+
+      SELECT
+            (SELECT COUNT(*) FROM quiz_results WHERE resposta_correta = 1) / COUNT(*) * 100 AS correctPercentage,
+            (SELECT COUNT(DISTINCT fkUsuario) FROM quiz_results) AS totalPlayers,
+            (
+                SELECT JSON_ARRAYAGG(count)
+                FROM (
+                    SELECT COUNT(*) AS count
+                    FROM quiz_results
+                    GROUP BY DAYOFWEEK(data_registro)
+                ) AS dailyAttempts
+            ) AS attemptsData
+        FROM quiz_results
