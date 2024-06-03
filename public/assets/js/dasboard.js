@@ -29,12 +29,6 @@ function updateKPIs(correctPercentage, totalPlayers) {
     document.getElementById('totalPlayers').innerText = `${totalPlayers}`;
 }
 
-// Atualização das KPI's
-function updateKPIs(correctPercentage, totalPlayers) {
-    document.getElementById('correctPercentage').innerText = `${correctPercentage}%`;
-    document.getElementById('totalPlayers').innerText = `${totalPlayers}`;
-}
-
 // Função para buscar dados do servidor
 async function fetchQuizData() {
     try {
