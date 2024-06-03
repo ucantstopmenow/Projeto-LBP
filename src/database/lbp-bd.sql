@@ -1,5 +1,5 @@
 CREATE DATABASE lbp;
-drop database lbp;
+-- drop database lbp;
 USE lbp;
 
 CREATE TABLE usuario (
