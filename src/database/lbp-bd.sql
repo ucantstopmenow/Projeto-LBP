@@ -48,10 +48,3 @@ SELECT
         ) AS dailyAttempts
     ) AS attemptsData
 FROM quiz_results;
-
-
-INSERT INTO quiz (nome_quiz, descricao) VALUES
-("lbp", "primeiro quiz");
-
-insert into usuario (nome, email, senha) values
-("joao", "joao123@gmail.com", "joao123@");
