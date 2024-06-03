@@ -29,13 +29,19 @@ function updateKPIs(correctPercentage, totalPlayers) {
     document.getElementById('totalPlayers').innerText = `${totalPlayers}`;
 }
 
+// Atualização das KPI's
+function updateKPIs(correctPercentage, totalPlayers) {
+    document.getElementById('correctPercentage').innerText = `${correctPercentage}%`;
+    document.getElementById('totalPlayers').innerText = `${totalPlayers}`;
+}
+
 // Função para buscar dados do servidor
 async function fetchQuizData() {
     try {
         const response = await fetch('http://localhost:3333/quizData'); 
         const data = await response.json();
         
-        console.log('Dados recebidos:', data); 
+        console.log('Dados recebidos:', data); // Verifique os dados recebidos
         
         const correctPercentage = data.correctPercentage;
         const totalPlayers = data.totalPlayers;
@@ -48,6 +54,8 @@ async function fetchQuizData() {
             // Se falhar, use diretamente
             attemptsData = data.attemptsData;
         }
+
+        console.log('Tentativas Diárias:', attemptsData);
 
         // Atualizar gráfico
         myChart.data.datasets[0].data = attemptsData;

@@ -2,9 +2,6 @@
 var ambiente_processo = 'desenvolvimento';
 
 var caminho_env = ambiente_processo === 'producao' ? '.env' : '.env.dev';
-// Acima, temos o uso do operador ternário para definir o caminho do arquivo .env
-// A sintaxe do operador ternário é: condição ? valor_se_verdadeiro : valor_se_falso
-
 require("dotenv").config({ path: caminho_env });
 
 var express = require("express");
@@ -19,7 +16,6 @@ var app = express();
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
-// var blogRouter = require("./src/routes/blogRoutes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,7 +26,6 @@ app.use(bodyParser.json());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
-// app.use("/blogRoutes", blogRouter);
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -47,7 +42,6 @@ db.connect(err => {
     console.log('Conectado ao banco de dados.');
 });
 
-
 app.post('/saveQuizResults', (req, res) => {
     const {quizId, userId, correctAnswers } = req.body;
     const sql = 'INSERT INTO quiz_results (fkQuiz, fkUsuario, resposta_correta) VALUES (?, ?, ?)';
@@ -61,23 +55,21 @@ app.post('/saveQuizResults', (req, res) => {
         res.json({ message: 'Resultados salvos com sucesso!' });
     });
 });
-//----------------------------------------------------------------------------------------------------------------
 
-// Rota para obter os dados do quiz
 app.get('/quizData', (req, res) => {
     const sql = `
-        SELECT
-            (SELECT COUNT(*) FROM quiz_results WHERE resposta_correta = 1) / COUNT(*) * 100 AS correctPercentage,
-            (SELECT COUNT(DISTINCT fkUsuario) FROM quiz_results) AS totalPlayers,
-            (
-                SELECT JSON_ARRAYAGG(count)
-                FROM (
-                    SELECT COUNT(*) AS count
-                    FROM quiz_results
-                    GROUP BY DAYOFWEEK(createdAt)
-                ) AS dailyAttempts
-            ) AS attemptsData
-        FROM quiz_results
+    SELECT
+    ROUND((SUM(resposta_correta) / COUNT(*)) * 10) AS correctPercentage,
+    (SELECT COUNT(DISTINCT idUsuario) FROM usuario) AS totalPlayers,
+    (
+        SELECT JSON_ARRAYAGG(count)
+        FROM (
+            SELECT COUNT(*) AS count
+            FROM quiz_results
+            GROUP BY DAYOFWEEK(data_registro)
+        ) AS dailyAttempts
+    ) AS attemptsData
+FROM quiz_results;
     `;
     db.query(sql, (err, result) => {
         if (err) {
@@ -85,10 +77,10 @@ app.get('/quizData', (req, res) => {
             res.status(500).send('Erro ao buscar dados');
             return;
         }
+        console.log('Dados do quiz:', result);
         res.json(result[0]);
     });
 });
-
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -1,5 +1,5 @@
 CREATE DATABASE lbp;
--- drop database lbp;
+drop database lbp;
 USE lbp;
 
 CREATE TABLE usuario (
@@ -37,8 +37,8 @@ INSERT INTO usuario (nome, email, senha) VALUES ('Usuário 1', 'usuario1@example
 INSERT INTO quiz_results (fkQuiz, fkUsuario, resposta_correta) VALUES (1, 1, 1), (1, 1, 0), (1, 1, 1);
 
 SELECT
-    ROUND((SELECT COUNT(*) FROM quiz_results WHERE resposta_correta) / COUNT(*) * 100, 2) AS correctPercentage,
-    (SELECT COUNT(DISTINCT idUsuario) FROM usuario) AS totalPlayers,	
+    ROUND((SUM(resposta_correta) / COUNT(*)) * 10) AS correctPercentage,
+    (SELECT COUNT(DISTINCT idUsuario) FROM usuario) AS totalPlayers,
     (
         SELECT JSON_ARRAYAGG(count)
         FROM (
@@ -49,3 +49,9 @@ SELECT
     ) AS attemptsData
 FROM quiz_results;
 
+
+INSERT INTO quiz (nome_quiz, descricao) VALUES
+("lbp", "primeiro quiz");
+
+insert into usuario (nome, email, senha) values
+("joao", "joao123@gmail.com", "joao123@");
