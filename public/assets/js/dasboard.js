@@ -4,7 +4,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+        labels: ['Sábado', 'Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
         datasets: [{
             label: 'Número de Tentativas',
             data: [],
@@ -35,7 +35,7 @@ async function fetchQuizData() {
         const response = await fetch('http://localhost:3333/quizData'); 
         const data = await response.json();
         
-        console.log('Dados recebidos:', data); // Verifique os dados recebidos
+        console.log('Dados recebidos:', data);
         
         const correctPercentage = data.correctPercentage;
         const totalPlayers = data.totalPlayers;
