@@ -29,7 +29,7 @@ CREATE TABLE quiz_results (
 select * from quiz_results;
 select * from usuario;
 select * from quiz;
--- truncate table quiz_results;
+truncate table quiz_results;
 
 insert into quiz (nome_quiz, descricao) values
 ("lbp", "primeiro quiz");
@@ -51,19 +51,17 @@ FROM quiz_results;
 
 -- Inserir dados na tabela quiz_results
 INSERT INTO quiz_results (fkQuiz, fkUsuario, resposta_correta, data_registro) VALUES
-(1, 1, 4, '2024-06-01'),
 (1, 1, 9, '2024-06-01'),
 (1, 1, 1, '2024-06-01'),
 (1, 1, 10, '2024-06-01'),
-(1, 1, 1, '2024-06-01'),
 (1, 1, 3, '2024-06-01'),
 (1, 1, 3, '2024-06-01'),
 (1, 1, 10, '2024-06-02'),
 (1, 1, 10, '2024-06-02'),
-(1, 1, 10, '2024-06-02'),
-(1, 1, 3, '2024-06-02'),
 (1, 1, 10, '2024-06-02'),
 (1, 1, 1, '2024-06-03'),
+(1, 1, 10, '2024-06-04'),
+(1, 1, 10, '2024-06-04'),
 (1, 1, 10, '2024-06-03');
 
 grant all privileges on *.* to adm;
