@@ -17,12 +17,13 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 
+// Configura o middleware do Express para lidar com JSON e URL-encoded
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // Serve arquivos estáticos da pasta 'public'
 
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); // Habilita CORS (Cross-Origin Resource Sharing)
+app.use(bodyParser.json()); // Configura o middleware do BodyParser para JSON
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
@@ -42,6 +43,7 @@ db.connect(err => {
     console.log('Conectado ao banco de dados.');
 });
 
+// Rota para salvar os resultados do quiz no banco de dados
 app.post('/saveQuizResults', (req, res) => {
     const {quizId, userId, correctAnswers } = req.body;
     const sql = 'INSERT INTO quiz_results (fkQuiz, fkUsuario, resposta_correta) VALUES (?, ?, ?)';
@@ -56,6 +58,7 @@ app.post('/saveQuizResults', (req, res) => {
     });
 });
 
+// Rota para buscar dados do quiz do banco de dados
 app.get('/quizData', (req, res) => {
     const sql = `
     SELECT

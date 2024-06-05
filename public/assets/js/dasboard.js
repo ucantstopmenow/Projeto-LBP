@@ -42,10 +42,8 @@ async function fetchQuizData() {
         
         let attemptsData;
         try {
-            // Tente parsear attemptsData se for uma string JSON
             attemptsData = JSON.parse(data.attemptsData);
         } catch (e) {
-            // Se falhar, use diretamente
             attemptsData = data.attemptsData;
         }
 
