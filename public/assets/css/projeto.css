@@ -1,0 +1,137 @@
+.caveat-uniquifier {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }
+  
+  .amatic-sc-regular {
+      font-family: "Amatic SC", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+    
+    .amatic-sc-bold {
+      font-family: "Amatic SC", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+  
+    body{
+      width: 100%;
+      height: 111vh;
+      background-image: url(../projeto!.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      /* position: fixed;   */
+    }
+  
+  .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+  
+  .image {
+      width: 100%;
+      height: 100vh;
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  
+  .image-2 {
+      margin-top: 30px;
+      height: 111vh;
+      margin-left: -0.5%;
+      overflow-y: hidden;
+      background-image: url(../projeto2!.png);
+      background-repeat: no-repeat;
+      background-size: 100%;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column; /* Substitua pelo caminho da segunda imagem */
+  }
+  
+    .navbar {
+      position: relative;
+      margin-top: 10px;
+    }
+    
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .navbar li {
+      display: inline;
+      margin-right: 20px;
+    }
+    
+    .navbar a {
+      font-family: 'Inter', sans-serif; /* Usando a fonte INTER */
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      background-color: rgb(255, 255, 255);
+      border-radius: 4px;
+      padding: 3px;
+  
+    }
+    
+    .navbar .inicio {
+      color: #1abc9c; /* Cor inicial para o botão "Início" */
+  }
+  
+  .navbar .login {
+      color: #3498db; /* Cor inicial para o botão "Login" */
+  }
+  
+  .navbar .jogos {
+      color: #f1c40f; /* Cor inicial para o botão "Jogos" */
+  }
+  
+  .navbar .projeto {
+      color: #e74c3c; /* Cor inicial para o botão "Projeto" */
+  }
+  
+  .navbar a:hover {
+      color: #000000;
+  }
+    
+  
+    .botao_entrar {
+      height: 150px;
+      background-color: transparent;
+      transition: transform 0.3s ease; 
+      cursor: pointer;
+      margin-left: 32%;
+      margin-top: 32%;
+    }
+    
+    .botao_entrar:hover {
+      transform: scale(1.1); 
+    }
+  
+  .div_incial_superior{
+    width: 99%;
+    height: 20%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  
+  .div_incial_meio {
+    gap: 10px;
+    width: 26%;
+    height: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid black;
+    position: relative; /* Adicione position: relative; */
+  }

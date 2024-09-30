@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./assets/css/cadastro.css" />
+    <link rel="icon" href="./imagens/sun.png" type="image/png" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul>
+        <li><a class="inicio" href="./index.html">Início</a></li>
+        <li><a class="login" href="./login-lbp.html">Login</a></li>
+        <li><a class="jogos" href="./jogos.html">Jogos</a></li>
+        <li><a class="projeto" href="./projeto.html">Projeto</a></li>
+      </ul>
+    </nav>
+    <div class="conteudo">
+      <div class="lado-esquerdo">
+        <p>Digite seu Nickname:</p>
+        <input class="inputs" type="text" id="nome_input" />
+        <p>Digite seu Email:</p>
+        <input class="inputs" type="text" id="email_input" />
+      </div>
+
+      <div class="lado-direito">
+        <p>Digite sua Senha:</p>
+        <input class="inputs" type="password" id="senha_input" />
+        <p>Confirme sua Senha:</p>
+        <input class="inputs" type="password" id="confirmacao_senha_input" />
+      </div>
+    </div>
+    <div class="mensagem_erro" id="mensagem_erro"></div>
+    <button class="botao" onclick="cadastrar()">Cadastrar-se</button>
+  </body>
+</html>
+
+<script>
+  function cadastrar() {
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      mensagem_erro.innerHTML = "Por favor preencha todos os campos ;)";
+      return false;
+    }
+    if (senhaVar != confirmacaoSenhaVar) {
+      mensagem_erro.innerHTML =
+        "As senhas não coincidem! Por favor, tente novamente ;)";
+      return false;
+    }
+    if (senhaVar.indexOf("@" || "#" || "$" || "%" || "&") == -1) {
+      mensagem_erro.innerHTML = "Lembre-se de colocar um caractére especial!";
+      return false;
+    }
+    if (emailVar.indexOf("@") == -1) {
+      mensagem_erro.innerHTML = "Ei! faltou o @ no email xD";
+      return false;
+    }
+    if (senhaVar.length < 8) {
+      mensagem_erro.innerHTML =
+        "Sua senha deve conter no mínimo 8 caractéres ^^";
+      return false;
+    }
+    if (senhaVar.length > 20) {
+      mensagem_erro.innerHTML =
+        "Sua senha deve conter no máximo 20 caractéres ^^";
+      return false;
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando... 0%";
+
+          // Função para simular o progresso
+          const simulateProgress = (progress) => {
+            setTimeout(() => {
+              mensagem_erro.innerHTML = `Cadastro realizado com sucesso! Redirecionando... ${progress}%`;
+              if (progress < 100) {
+                simulateProgress(progress + 1);
+              } else {
+                window.location = "login-lbp.html";
+              }
+            }, 120); // 120ms para cada incremento de 1%
+          };
+
+          // Inicia a simulação do progresso
+          for (let progress = 0; progress <= 100; progress++) {
+            simulateProgress(progress);
+          }
+
+          limparFormulario();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+</script>

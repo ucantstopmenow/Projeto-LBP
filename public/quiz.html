@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <title>Blog</title>
+    <link rel="stylesheet" href="./assets//css/quiz.css">
+    <link rel="icon" href="./imagens/sun.png" type="image/png">
+</head>
+    <nav class="navbar">
+        <ul>
+            <li><a class="inicio" href="./index.html">Início</a></li>
+            <li><a class="jogos" href="./jogos.html">Jogos</a></li>
+            <li><a class="projeto" href="./projeto.html">Projeto</a></li>
+            <li><a class="dashboard" href="./dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="conteudo">
+        <div id="results" class="results"></div>
+        <div id="quiz-container"></div>
+        <button class="reset-button" onclick="resetQuiz()">Tentar Novamente!</button>
+    </div>
+</body>
+<script>
+     // Adiciona um ouvinte de evento que executa quando o DOM (estrutura da página) estiver completamente carregado
+    document.addEventListener('DOMContentLoaded', () => {
+        const quizId = 1; 
+        const userId = 1;
+        // Array de objetos, cada objeto representando uma pergunta do quiz
+        const questions = [
+            {
+                question: "Quem é o personagem principal de Little Big Planet?",
+                answers: ["Mario", "Sonic", "Sackboy", "Link"],
+                correct: 2
+            },
+            {
+                question: "Em qual console Little Big Planet foi lançado primeiro?",
+                answers: ["Xbox 360", "PlayStation 3", "Wii", "Nintendo Switch"],
+                correct: 1
+            },
+            {
+                question: "Quem é o vilão de Little Big Planet 2?",
+                answers: ["Lich", "The Collector", "Negativitron", "Vex"],
+                correct: 2
+            },
+            {
+                question: "Qual destes locais, SackBoy nunca foi?",
+                answers: ["Avalonia", "Eve's Asylum", "Da Vinci's Hideout", "The Factory of End"],
+                correct: 3
+            },
+            {
+                question: "Quem é o primeiro personagem desbloqueado em Little Big Planet 3?",
+                answers: ["Zom Zom", "Toggle", "Swoop", "OddSock"],
+                correct: 3
+            },
+            {
+                question: "Quem é o personagem que aparece no tutorial em Little Big Planet 2?",
+                answers: ["Larry da Vinci", "Eve", "Rei", "Newton"],
+                correct: 0
+            },
+            {
+                question: "Em qual console SackBoy: A big adventure  foi lançado?",
+                answers: ["Xbox Series X", "PlayStation 4", "PSVITA", "PlayStation 5"],
+                correct: 3
+            },
+            {
+                question: "Quem é o vilão de Little Big Planet 3?",
+                answers: ["Newton", "The Collector", "Negativitron", "Vex"],
+                correct: 0
+            },
+            {
+                question: "Qual foi o último jogo lançado da franquia?",
+                answers: ["Little Big Planet 3", "Little Big Planet Karting", "Little Big Planet 4", "SackBoy: A big adventure"],
+                correct: 0
+            },
+            {
+                question: "Qual personagem o SackBoy nunca ganhou skin?",
+                answers: ["Nathan Drake", "Kratos", "Sonic", "Master Chief"],
+                correct: 3
+            },
+        ];
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0;
+
+        // Função para exibir a pergunta atual
+        function showQuestion(index) {
+            // Obtém os dados da pergunta atual
+            const questionData = questions[index];
+            // Seleciona o contêiner do quiz no DOM
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = '';
+
+            const questionElement = document.createElement('div');
+            questionElement.classList.add('question-container');
+
+            // Cria um novo elemento div para o texto da pergunta
+            const questionText = document.createElement('div');
+            questionText.classList.add('question');
+            questionText.textContent = questionData.question;
+            questionElement.appendChild(questionText);
+
+            // Itera sobre cada resposta possível da pergunta atual
+            questionData.answers.forEach((answer, i) => {
+                  // Cria um novo elemento div para cada resposta
+                const answerElement = document.createElement('div');
+                answerElement.classList.add('answer');
+                answerElement.textContent = answer;
+                 // Adiciona um ouvinte de evento de clique a cada resposta
+                answerElement.addEventListener('click', () => handleAnswer(i));
+                questionElement.appendChild(answerElement);
+            });
+             // Adiciona o elemento da pergunta ao contêiner do quiz
+            quizContainer.appendChild(questionElement);
+        }
+        // Função para lidar com a seleção de uma resposta
+        function handleAnswer(selectedIndex) {
+            // Obtém os dados da pergunta atual
+            const questionData = questions[currentQuestionIndex];
+            console.log(`Pergunta: ${questionData.question}`);
+            console.log(`Resposta selecionada: ${questionData.answers[selectedIndex]}`);
+            // Verifica se a resposta selecionada está correta
+            if (selectedIndex === questionData.correct) {
+                correctAnswers++;
+                console.log('Resposta correta!');
+            } else {
+                console.log('Resposta incorreta.');
+            }
+               // Passa para a próxima pergunta
+            currentQuestionIndex++;
+             // Se ainda houver perguntas, exibe a próxima pergunta
+            if (currentQuestionIndex < questions.length) {
+                showQuestion(currentQuestionIndex);
+            } else {
+                // Se não houver mais perguntas, exibe os resultados
+                showResults();
+            }
+        }
+
+        function showResults() {
+              // Seleciona o contêiner de resultados no DOM
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.textContent = `Parabéns! Você acertou ${correctAnswers} de ${questions.length} perguntas.`;
+
+            // Enviar resultados para o servidor
+            fetch('/saveQuizResults', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({quizId: quizId, userId: userId, correctAnswers: correctAnswers })
+            })
+            .then(response => response.json())
+            .then(data => console.log('Resultados salvos:', data))
+            .catch(error => console.error('Erro ao salvar resultados:', error));
+        }
+          // Função para resetar o quiz
+            window.resetQuiz = function() {
+                location.reload();
+            }
+         // Exibe a primeira pergunta do quiz
+        showQuestion(currentQuestionIndex);
+    });
+</script>
+</html>
+    
